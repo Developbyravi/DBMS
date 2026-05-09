@@ -1,0 +1,252 @@
+# Experiment No. 2
+
+# Title
+
+Execute DDL commands to manage Database using SQL.
+
+---
+
+# Aim
+
+To study and execute DDL (Data Definition Language) commands for managing database structure using SQL.
+
+---
+
+# Theory
+
+DDL (Data Definition Language) commands are used to define, create, modify, and delete database objects such as tables, views, and indexes.
+
+These commands affect the structure of the database.
+DDL commands automatically save changes permanently in the database because they perform **AUTO COMMIT**.
+
+DDL commands are mainly used by database administrators and developers while designing database systems.
+
+---
+
+# Types of DDL Commands
+
+| Command  | Purpose                                |
+| -------- | -------------------------------------- |
+| CREATE   | Creates a new table or database object |
+| ALTER    | Modifies existing table structure      |
+| DROP     | Deletes table permanently              |
+| TRUNCATE | Removes all records from table         |
+| RENAME   | Changes table name                     |
+
+---
+
+# 1. CREATE Command
+
+## Theory
+
+The CREATE command is used to create a new table in the database.
+
+---
+
+## Syntax
+
+```sql id="6o9ht8"
+CREATE TABLE table_name(
+ column1 datatype(size),
+ column2 datatype(size),
+ column3 datatype(size)
+);
+```
+
+---
+
+## Example
+
+```sql id="79l9q0"
+CREATE TABLE Student(
+ RollNo NUMBER(5),
+ Name VARCHAR2(20),
+ City VARCHAR2(20)
+);
+```
+
+---
+
+## Explanation
+
+* `RollNo` stores student roll number
+* `Name` stores student name
+* `City` stores city name
+
+After execution, a table named `Student` is created successfully.
+
+---
+
+# 2. ALTER Command
+
+## Theory
+
+The ALTER command is used to modify the structure of an existing table.
+
+It can:
+
+* Add columns
+* Modify columns
+* Delete columns
+
+---
+
+## Syntax for Adding Column
+
+```sql id="6sf9fm"
+ALTER TABLE table_name
+ADD column_name datatype(size);
+```
+
+---
+
+## Example
+
+```sql id="t9z6kq"
+ALTER TABLE Student
+ADD Marks NUMBER(3);
+```
+
+---
+
+## Explanation
+
+A new column `Marks` is added to the Student table.
+
+---
+
+# 3. DROP Command
+
+## Theory
+
+The DROP command permanently deletes the table and all its data.
+
+---
+
+## Syntax
+
+```sql id="c5cq4j"
+DROP TABLE table_name;
+```
+
+---
+
+## Example
+
+```sql id="9u4d1p"
+DROP TABLE Student;
+```
+
+---
+
+## Explanation
+
+The Student table is removed completely from the database.
+
+---
+
+# 4. TRUNCATE Command
+
+## Theory
+
+The TRUNCATE command removes all records from a table but keeps the table structure.
+
+It is faster than DELETE command.
+
+---
+
+## Syntax
+
+```sql id="0fj8a3"
+TRUNCATE TABLE table_name;
+```
+
+---
+
+## Example
+
+```sql id="8bjlwm"
+TRUNCATE TABLE Student;
+```
+
+---
+
+## Explanation
+
+All records from Student table are deleted, but table structure remains unchanged.
+
+---
+
+# 5. RENAME Command
+
+## Theory
+
+The RENAME command changes the name of an existing table.
+
+---
+
+## Syntax
+
+```sql id="dlk4n5"
+RENAME old_table_name TO new_table_name;
+```
+
+---
+
+## Example
+
+```sql id="0eivdg"
+RENAME Student TO Student_Info;
+```
+
+---
+
+## Explanation
+
+The table name changes from `Student` to `Student_Info`.
+
+---
+
+# Complete Program
+
+```sql id="7l4mjlwm"
+CREATE TABLE Student(
+ RollNo NUMBER(5),
+ Name VARCHAR2(20),
+ City VARCHAR2(20)
+);
+
+ALTER TABLE Student
+ADD Marks NUMBER(3);
+
+RENAME Student TO Student_Info;
+
+TRUNCATE TABLE Student_Info;
+
+DROP TABLE Student_Info;
+```
+
+---
+
+# Output
+
+* Table created successfully
+* Column added successfully
+* Table renamed successfully
+* Records deleted successfully
+* Table dropped successfully
+
+---
+
+# Advantages of DDL Commands
+
+* Helps manage database structure
+* Easy modification of tables
+* Improves database organization
+* Supports database maintenance
+
+---
+
+# Conclusion
+
+Thus, DDL commands such as CREATE, ALTER, DROP, TRUNCATE, and RENAME were successfully executed to manage the database structure using SQL.
