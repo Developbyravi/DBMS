@@ -1,0 +1,241 @@
+# Experiment No. 1
+
+# Title
+
+Design any database with at least two entities and relationships between them. Draw suitable ER/EER diagram for the system.
+
+---
+
+# Aim
+
+To design a database containing at least two entities with relationships between them and to draw a suitable ER diagram for the system.
+
+---
+
+# Theory
+
+A database is an organized collection of related data used to store, manage, and retrieve information efficiently.
+Before creating a database, it is important to design its structure properly. Database design helps in reducing redundancy and improving data consistency.
+
+An **ER (Entity Relationship) Diagram** is a graphical representation of entities, attributes, and relationships in a database system.
+
+---
+
+# Important Terms
+
+## 1. Entity
+
+An entity is a real-world object about which data is stored.
+
+### Examples
+
+* Student
+* Course
+* Employee
+
+---
+
+## 2. Attribute
+
+Attributes are properties of an entity.
+
+### Example
+
+For Student entity:
+
+* RollNo
+* Name
+* City
+
+---
+
+## 3. Relationship
+
+A relationship shows association between entities.
+
+### Example
+
+* Student enrolls in Course
+
+---
+
+## 4. Primary Key
+
+A primary key uniquely identifies each record in a table.
+
+### Example
+
+* Student_ID
+* Course_ID
+
+---
+
+## 5. Foreign Key
+
+A foreign key creates relationship between two tables.
+
+---
+
+# Problem Statement
+
+Design a **College Database System** with two entities:
+
+1. Student
+2. Course
+
+Relationship:
+
+* A student enrolls in a course.
+
+---
+
+# Entities and Attributes
+
+## Student Entity
+
+| Attribute    | Description       |
+| ------------ | ----------------- |
+| Student_ID   | Unique student ID |
+| Student_Name | Name of student   |
+| City         | Student city      |
+
+---
+
+## Course Entity
+
+| Attribute   | Description      |
+| ----------- | ---------------- |
+| Course_ID   | Unique course ID |
+| Course_Name | Name of course   |
+| Fees        | Course fees      |
+
+---
+
+# Relationship
+
+| Relationship | Description               |
+| ------------ | ------------------------- |
+| Enrolls      | Student enrolls in course |
+
+---
+
+# ER Diagram Representation
+
+```text
++----------------+         Enrolls         +----------------+
+|    STUDENT     |------------------------>|     COURSE     |
++----------------+                         +----------------+
+| Student_ID(PK) |                         | Course_ID(PK)  |
+| Student_Name   |                         | Course_Name    |
+| City           |                         | Fees           |
++----------------+                         +----------------+
+```
+
+---
+
+# Table Structure
+
+## Student Table
+
+| Column Name  | Data Type |
+| ------------ | --------- |
+| Student_ID   | NUMBER    |
+| Student_Name | VARCHAR2  |
+| City         | VARCHAR2  |
+
+---
+
+## Course Table
+
+| Column Name | Data Type |
+| ----------- | --------- |
+| Course_ID   | NUMBER    |
+| Course_Name | VARCHAR2  |
+| Fees        | NUMBER    |
+
+---
+
+# SQL Syntax
+
+## Create Student Table
+
+```sql id="6gzrti"
+CREATE TABLE Student(
+ Student_ID NUMBER(5),
+ Student_Name VARCHAR2(20),
+ City VARCHAR2(20)
+);
+```
+
+---
+
+## Create Course Table
+
+```sql id="e4t0vk"
+CREATE TABLE Course(
+ Course_ID NUMBER(5),
+ Course_Name VARCHAR2(20),
+ Fees NUMBER(8)
+);
+```
+
+---
+
+# Example
+
+## Insert Data into Student Table
+
+```sql id="ib8r54"
+INSERT INTO Student
+VALUES(1,'Ravi','Pune');
+
+INSERT INTO Student
+VALUES(2,'Amit','Mumbai');
+```
+
+---
+
+## Insert Data into Course Table
+
+```sql id="t64w8n"
+INSERT INTO Course
+VALUES(101,'DBMS',5000);
+
+INSERT INTO Course
+VALUES(102,'Java',7000);
+```
+
+---
+
+# Output
+
+## Student Table
+
+| Student_ID | Student_Name | City   |
+| ---------- | ------------ | ------ |
+| 1          | Ravi         | Pune   |
+| 2          | Amit         | Mumbai |
+
+---
+
+## Course Table
+
+| Course_ID | Course_Name | Fees |
+| --------- | ----------- | ---- |
+| 101       | DBMS        | 5000 |
+| 102       | Java        | 7000 |
+
+---
+
+# Advantages of ER Diagram
+
+* Easy to understand database structure
+* Reduces data redundancy
+* Helps maintain relationships
+* Improves database design
+
+---
+
+# Conclusion
+
+Thus, a database containing two entities and their relationship was successfully designed and a suitable ER diagram was created for the system.
