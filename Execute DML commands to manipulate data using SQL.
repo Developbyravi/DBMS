@@ -1,0 +1,276 @@
+# Experiment No. 4
+
+# Title
+
+Execute DML commands to manipulate data using SQL.
+
+---
+
+# Aim
+
+To study and execute DML (Data Manipulation Language) commands to manipulate data in database tables using SQL.
+
+---
+
+# Theory
+
+DML (Data Manipulation Language) commands are used to insert, update, delete, and retrieve data from database tables.
+
+These commands work on the data stored inside the tables rather than changing the table structure.
+
+DML commands are very important because they help users interact with the database and manage records efficiently.
+
+Unlike DDL commands, DML commands do not automatically save changes permanently.
+Changes can be controlled using:
+
+* COMMIT
+* ROLLBACK
+
+---
+
+# Types of DML Commands
+
+| Command | Purpose                     |
+| ------- | --------------------------- |
+| INSERT  | Adds new records into table |
+| UPDATE  | Modifies existing records   |
+| DELETE  | Removes records from table  |
+| SELECT  | Retrieves data from table   |
+
+---
+
+# 1. INSERT Command
+
+## Theory
+
+The INSERT command is used to add new records into a table.
+
+---
+
+## Syntax
+
+
+INSERT INTO table_name
+VALUES(value1, value2, value3);
+```
+
+---
+
+## Example
+
+```sql id="20fru9"
+INSERT INTO Student
+VALUES(1,'Ravi','Pune');
+```
+
+---
+
+## Explanation
+
+A new record is inserted into the Student table.
+
+---
+
+# 2. UPDATE Command
+
+## Theory
+
+The UPDATE command is used to modify existing records in a table.
+
+The WHERE clause is generally used to specify which record should be updated.
+
+---
+
+## Syntax
+
+
+UPDATE table_name
+SET column_name = value
+WHERE condition;
+```
+
+---
+
+## Example
+
+
+UPDATE Student
+SET City='Mumbai'
+WHERE RollNo=1;
+```
+
+---
+
+## Explanation
+
+The city of student whose RollNo is 1 changes from Pune to Mumbai.
+
+---
+
+# 3. DELETE Command
+
+## Theory
+
+The DELETE command removes records from a table.
+
+The WHERE clause specifies which record should be deleted.
+
+If WHERE clause is not used, all records are deleted.
+
+---
+
+## Syntax
+
+
+DELETE FROM table_name
+WHERE condition;
+```
+
+---
+
+## Example
+
+
+DELETE FROM Student
+WHERE RollNo=1;
+```
+
+---
+
+## Explanation
+
+The record of student with RollNo 1 is deleted from the table.
+
+---
+
+# 4. SELECT Command
+
+## Theory
+
+The SELECT command retrieves data from database tables.
+
+It is one of the most frequently used SQL commands.
+
+---
+
+## Syntax
+
+SELECT column_name
+FROM table_name;
+```
+
+---
+
+## Example
+
+
+SELECT * FROM Student;
+```
+
+---
+
+## Explanation
+
+All records and columns from Student table are displayed.
+
+---
+
+# Database Table
+
+## Student Table
+
+| Column Name | Data Type    |
+| ----------- | ------------ |
+| RollNo      | NUMBER(5)    |
+| Name        | VARCHAR2(20) |
+| City        | VARCHAR2(20) |
+
+---
+
+# Complete Program
+
+## Create Table
+
+CREATE TABLE Student(
+ RollNo NUMBER(5),
+ Name VARCHAR2(20),
+ City VARCHAR2(20)
+);
+
+
+## Insert Records
+
+INSERT INTO Student
+VALUES(1,'Ravi','Pune');
+
+INSERT INTO Student
+VALUES(2,'Amit','Delhi');
+```
+
+---
+
+## Display Records
+
+SELECT * FROM Student;
+```
+
+---
+
+## Update Record
+
+
+UPDATE Student
+SET City='Mumbai'
+WHERE RollNo=1;
+```
+
+---
+
+## Delete Record
+
+DELETE FROM Student
+WHERE RollNo=2;
+```
+
+---
+
+# Output
+
+## After INSERT
+
+| RollNo | Name | City  |
+| ------ | ---- | ----- |
+| 1      | Ravi | Pune  |
+| 2      | Amit | Delhi |
+
+---
+
+## After UPDATE
+
+| RollNo | Name | City   |
+| ------ | ---- | ------ |
+| 1      | Ravi | Mumbai |
+| 2      | Amit | Delhi  |
+
+---
+
+## After DELETE
+
+| RollNo | Name | City   |
+| ------ | ---- | ------ |
+| 1      | Ravi | Mumbai |
+
+---
+
+# Advantages of DML Commands
+
+* Easy data manipulation
+* Efficient record management
+* Supports modification of existing data
+* Helps retrieve required information quickly
+
+---
+
+# Conclusion
+
+Thus, DML commands such as INSERT, UPDATE, DELETE, and SELECT were successfully executed to manipulate data in database tables using SQL.
