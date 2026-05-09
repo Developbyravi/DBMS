@@ -1,0 +1,321 @@
+# Experiment No. 3
+
+# Title
+
+Create tables with Primary Key, Foreign Key, and other constraints.
+
+---
+
+# Aim
+
+To create tables using Primary Key, Foreign Key, and other constraints in SQL.
+
+---
+
+# Theory
+
+Constraints are rules applied on table columns to maintain accuracy, validity, and integrity of data in a database.
+
+Constraints prevent invalid data entry and help maintain proper relationships between tables.
+
+In relational databases, constraints play an important role in ensuring reliable and consistent data.
+
+---
+
+# Types of Constraints
+
+| Constraint  | Purpose                                 |
+| ----------- | --------------------------------------- |
+| PRIMARY KEY | Uniquely identifies each record         |
+| FOREIGN KEY | Establishes relationship between tables |
+| NOT NULL    | Prevents NULL values                    |
+| UNIQUE      | Prevents duplicate values               |
+| CHECK       | Restricts values based on condition     |
+| DEFAULT     | Assigns default value automatically     |
+
+---
+
+# 1. PRIMARY KEY Constraint
+
+## Theory
+
+Primary Key uniquely identifies each row in a table.
+
+### Features
+
+* Cannot contain duplicate values
+* Cannot contain NULL values
+* Only one primary key is allowed per table
+
+---
+
+## Syntax
+
+
+CREATE TABLE table_name(
+ column_name datatype PRIMARY KEY
+);
+```
+
+---
+
+## Example
+
+
+CREATE TABLE Department(
+ DeptID NUMBER(5) PRIMARY KEY,
+ DeptName VARCHAR2(20)
+);
+```
+
+---
+
+## Explanation
+
+* `DeptID` uniquely identifies each department.
+* Duplicate department IDs are not allowed.
+
+---
+
+# 2. FOREIGN KEY Constraint
+
+## Theory
+
+Foreign Key is used to establish relationship between two tables.
+
+A foreign key in one table refers to the primary key of another table.
+
+It maintains referential integrity between tables.
+
+---
+
+## Syntax
+
+FOREIGN KEY(column_name)
+REFERENCES parent_table(column_name)
+
+
+## Example
+
+CREATE TABLE Employee(
+ EmpID NUMBER(5) PRIMARY KEY,
+ EmpName VARCHAR2(20),
+ Salary NUMBER(8),
+ DeptID NUMBER(5),
+ FOREIGN KEY(DeptID)
+ REFERENCES Department(DeptID)
+);
+```
+
+---
+
+## Explanation
+
+* `DeptID` in Employee table refers to `DeptID` in Department table.
+* Employee cannot be assigned to a department that does not exist.
+
+---
+
+# 3. NOT NULL Constraint
+
+## Theory
+
+NOT NULL constraint ensures that a column cannot store NULL values.
+
+---
+
+## Syntax
+
+
+column_name datatype NOT NULL
+```
+
+---
+
+## Example
+
+
+Name VARCHAR2(20) NOT NULL
+```
+
+---
+
+## Explanation
+
+The Name field must contain a value.
+
+---
+
+# 4. UNIQUE Constraint
+
+## Theory
+
+UNIQUE constraint prevents duplicate values in a column.
+
+---
+
+## Syntax
+
+
+column_name datatype UNIQUE
+```
+
+---
+
+## Example
+
+
+Email VARCHAR2(30) UNIQUE
+```
+
+---
+
+## Explanation
+
+Duplicate email addresses are not allowed.
+
+---
+
+# 5. CHECK Constraint
+
+## Theory
+
+CHECK constraint restricts data entry according to a condition.
+
+---
+
+## Syntax
+
+
+column_name datatype CHECK(condition)
+```
+
+---
+
+## Example
+
+
+Age NUMBER CHECK(Age>=18)
+```
+
+---
+
+## Explanation
+
+Only age values greater than or equal to 18 are allowed.
+
+---
+
+# Database Design
+
+## Department Table
+
+| Column Name | Data Type    | Constraint  |
+| ----------- | ------------ | ----------- |
+| DeptID      | NUMBER(5)    | PRIMARY KEY |
+| DeptName    | VARCHAR2(20) | NOT NULL    |
+
+---
+
+## Employee Table
+
+| Column Name | Data Type    | Constraint  |
+| ----------- | ------------ | ----------- |
+| EmpID       | NUMBER(5)    | PRIMARY KEY |
+| EmpName     | VARCHAR2(20) | NOT NULL    |
+| Email       | VARCHAR2(30) | UNIQUE      |
+| Salary      | NUMBER(8)    | —           |
+| Age         | NUMBER       | CHECK       |
+| DeptID      | NUMBER(5)    | FOREIGN KEY |
+
+---
+
+# Complete Program
+
+## Create Department Table
+
+
+CREATE TABLE Department(
+ DeptID NUMBER(5) PRIMARY KEY,
+ DeptName VARCHAR2(20) NOT NULL
+);
+```
+
+---
+
+## Create Employee Table
+
+
+CREATE TABLE Employee(
+ EmpID NUMBER(5) PRIMARY KEY,
+ EmpName VARCHAR2(20) NOT NULL,
+ Email VARCHAR2(30) UNIQUE,
+ Salary NUMBER(8),
+ Age NUMBER CHECK(Age>=18),
+ DeptID NUMBER(5),
+ FOREIGN KEY(DeptID)
+ REFERENCES Department(DeptID)
+);
+```
+
+---
+
+# Insert Values
+
+## Insert into Department Table
+
+
+INSERT INTO Department
+VALUES(101,'HR');
+
+INSERT INTO Department
+VALUES(102,'Sales');
+```
+
+---
+
+## Insert into Employee Table
+
+
+INSERT INTO Employee
+VALUES(1,'Ravi','ravi@gmail.com',50000,22,101);
+
+INSERT INTO Employee
+VALUES(2,'Amit','amit@gmail.com',45000,24,102);
+```
+
+---
+
+# Output
+
+## Department Table
+
+| DeptID | DeptName |
+| ------ | -------- |
+| 101    | HR       |
+| 102    | Sales    |
+
+---
+
+## Employee Table
+
+| EmpID | EmpName | Email                                   | Salary | Age | DeptID |
+| ----- | ------- | --------------------------------------- | ------ | --- | ------ |
+| 1     | Ravi    | [ravi@gmail.com](mailto:ravi@gmail.com) | 50000  | 22  | 101    |
+| 2     | Amit    | [amit@gmail.com](mailto:amit@gmail.com) | 45000  | 24  | 102    |
+
+---
+
+# Advantages of Constraints
+
+* Maintains data accuracy
+* Prevents duplicate entries
+* Maintains relationship between tables
+* Improves database consistency
+* Prevents invalid data entry
+
+---
+
+# Conclusion
+
+Thus, tables were successfully created using Primary Key, Foreign Key, and other constraints to maintain data integrity and relationships in the database.
